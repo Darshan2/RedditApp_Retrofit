@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/relLayout">
+
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/toolBar">
+
+            </android.support.v7.widget.Toolbar>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:layout_below="@id/relLayout">
+
+            <RelativeLayout
+                android:id="@+id/relLayout1"
+                android:padding="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_background">
+
+                <ImageView
+                    android:layout_margin="5dp"
+                    android:src="@drawable/reddit_logo"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/postImage"
+                    android:scaleType="centerCrop"
+                    android:layout_centerVertical="true"/>
+
+                <RelativeLayout
+                    android:id="@+id/relLayout2"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/postImage">
+
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/postTitle"
+                        android:gravity="center_vertical"
+                        android:text="post Title"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text="Author"
+                        android:textColor="@color/black"
+                        android:layout_below="@+id/postTitle"
+                        android:gravity="center_vertical"
+                        android:id="@+id/postAuthor"
+                        android:layout_marginTop="3dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:text="Updated"
+                        android:textColor="@color/grey"
+                        android:layout_below="@+id/postAuthor"
+                        android:gravity="center_vertical"
+                        android:id="@+id/postUpdated"
+                        android:layout_marginTop="3dp"/>
+                </RelativeLayout>
+
+                <Button
+                    android:layout_below="@id/relLayout2"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:text="Replay"
+                    android:background="@drawable/button_background"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/replayBtn"/>
+
+                <ProgressBar
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:id="@+id/postProgressbar"/>
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/relLayout1"
+                android:id="@+id/commentsRecyclerList">
+
+            </android.support.v7.widget.RecyclerView>
+
+
+            <ProgressBar
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerInParent="true"
+                android:id="@+id/commentsProgressbar"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

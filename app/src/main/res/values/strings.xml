@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">RedditDemoApp</string>
+
+
+    <string name="posted_by">Posted by:</string>
+
+    <!-- Layout -->
+    <string name="feed_hint">Type feed name</string>
+    <string name="load_feed">Load</string>
+    <string name="log_in">LOG IN</string>
+
+    <!--Intent extras-->
+    <string name="selected_post">Selected post</string>
+    <string name="web_url">web_url</string>
+    <string name="sessionUserName">sessionUserName</string>
+    <string name="sessionModHash">sessionModHash</string>
+    <string name="sessionCookie">sessionCookie</string>
+
+
+</resources>
