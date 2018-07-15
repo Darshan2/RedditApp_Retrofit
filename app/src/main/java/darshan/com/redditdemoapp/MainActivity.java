@@ -54,11 +54,10 @@ public class MainActivity extends AppCompatActivity implements PostsListAdapter.
     @Override
     public void onPostClick(Post post) {
         //start CommentActivity
+//        Log.d(TAG, "onPostClick: " + post);
+
         Intent intent = new Intent(this, CommentActivity.class);
         intent.putExtra(getString(R.string.selected_post), post);
-
-        Log.d(TAG, "onPostClick: " + post);
-
         startActivity(intent);
     }
 
@@ -158,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements PostsListAdapter.
                     postsList.add(post);
                 }
 
-                Log.d(TAG, "onResponse: postsList: " + postsList);
+//                Log.d(TAG, "onResponse: postsList: " + postsList);
                 setupRecyclerList(postsList);
 
             }
