@@ -11,7 +11,7 @@
     <color name="silver">#f1ffd3</color>
 
     <color name="grey">#a6a6a6</color>
-    <color name="light_grey">#ebe8e0</color>
+    <color name="light_grey">#d9d9d9</color>
     <color name="black">#000000</color>
     <color name="light_black">#595959</color>
 </resources>

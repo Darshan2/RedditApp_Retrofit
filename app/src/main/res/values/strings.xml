@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RedditDemoApp</string>
+    <string name="app_name">RedditApp_Retrofit</string>
 
 
     <string name="posted_by">Posted by:</string>
