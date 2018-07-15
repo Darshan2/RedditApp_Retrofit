@@ -1,5 +1,13 @@
 # RedditApp_Retrofit
 
+<p float="left">
+  <img src="screen_shots/feed.png" width="200" />
+  <img src="screen_shots/feed_comments.png" width="200" />
+  <img src="screen_shots/login.png" width="200" />
+  <img src="screen_shots/user_comment.png" width="200" />
+</p>
+
+
 ## Included features
 <ol>
 <li>RSS Feeds</li>
