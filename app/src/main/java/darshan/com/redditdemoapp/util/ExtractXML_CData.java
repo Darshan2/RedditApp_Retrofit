@@ -60,4 +60,24 @@ public class ExtractXML_CData {
         return result;
 
     }
+
+
+    public String formatComment(String commentStr) {
+        String[] commentSplit = commentStr.split(" ");
+        StringBuilder builder = new StringBuilder();
+        int length = commentSplit.length;
+
+        Log.d(TAG, "formatComment: split" + commentSplit);
+
+        for(int i = 0; i < length-1 ; i++) {
+            String str = commentSplit[i];
+            builder =  builder.append(str + "%20");
+        }
+        builder.append(commentSplit[length-1]);
+
+        String result = builder.toString();
+        Log.d(TAG, "formatComment: " + result);
+
+        return  result;
+    }
 }

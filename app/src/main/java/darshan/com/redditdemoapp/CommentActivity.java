@@ -246,8 +246,8 @@ public class CommentActivity extends AppCompatActivity implements CommentsListAd
         dialog.setTitle("Comment");
         dialog.setContentView(R.layout.dialog_input_comment);
 
-        int width = (int)((getResources().getDisplayMetrics().widthPixels) * 0.95);
-        int height = (int)((getResources().getDisplayMetrics().heightPixels) * 0.60);
+        int width = (int) ((getResources().getDisplayMetrics().widthPixels) * 0.95);
+        int height = (int) ((getResources().getDisplayMetrics().heightPixels) * 0.60);
         dialog.getWindow().setLayout(width, height);
         dialog.show();
 
@@ -272,7 +272,6 @@ public class CommentActivity extends AppCompatActivity implements CommentsListAd
                 headerMap.put("User-Agent", mSessionUserName);
                 headerMap.put("X-Modhash", mSessionModhash);
                 headerMap.put("cookie", "reddit_session=" + mSessionCookie);
-//                "reddit_session="
 
                 Log.d(TAG, "postCommentBtn:  \n" +
                         "username: " + mSessionUserName + "\n" +
@@ -281,18 +280,17 @@ public class CommentActivity extends AppCompatActivity implements CommentsListAd
                         "itemId:" + itemId
                 );
 
-//                String urlFormattedCommentString = "amp;text=" + commentStr;
+//                comment?parent=t1_e2g8xl3&amp;text=test%20comment
+                String commentFormatted = mExtractXML_CData.formatComment(commentStr);
 
-//                Call<CommentPosted> call = rssFeedAPI
-//                        .postComment(headerMap, "comment", itemId, commentStr);
-
-                Call<CommentPosted> call = rssFeedAPI.postCommentStatic();
+                Call<CommentPosted> call = rssFeedAPI
+                        .postComment(headerMap, "comment", itemId, commentFormatted);
 
                 call.enqueue(new Callback<CommentPosted>() {
                     @Override
                     public void onResponse(Call<CommentPosted> call, Response<CommentPosted> response) {
                         try{
-                            Log.d(TAG, "onResponse: feed: " + response.body().toString());
+                            Log.d(TAG, "onResponse: feed: " + response.body());
                             Log.d(TAG, "onResponse: Server Response: " + response.toString());
 
                             String postSuccess = response.body().getSuccess();
@@ -300,11 +298,14 @@ public class CommentActivity extends AppCompatActivity implements CommentsListAd
                                 dialog.dismiss();
                                 Toast.makeText(CommentActivity.this, "Post Successful", Toast.LENGTH_SHORT).show();
                             }else{
-                                Toast.makeText(CommentActivity.this, "An Error Occured. Did you sign in?", Toast.LENGTH_SHORT).show();
+                                //If you comment more than once at the same time. Reddit site will block you
+                                //from commenting for some time(usually 8min max)
+                                Toast.makeText(CommentActivity.this, "An Error Occured." +
+                                        "You are doing that to much. Wait for some time", Toast.LENGTH_SHORT).show();
                             }
 
                         }catch (NullPointerException e){
-                            Log.e(TAG, "onResponse: NullPointerException: " +e.getMessage() );
+                            e.printStackTrace();
                         }
                     }
 
@@ -317,7 +318,9 @@ public class CommentActivity extends AppCompatActivity implements CommentsListAd
 
             }
         });
+
     }
+
 
 
     /**

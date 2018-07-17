@@ -29,6 +29,7 @@ import darshan.com.redditdemoapp.models.Post;
 import darshan.com.redditdemoapp.models.feed.Entry;
 import darshan.com.redditdemoapp.util.ExtractXML_CData;
 import darshan.com.redditdemoapp.util.PostsListAdapter;
+import darshan.com.redditdemoapp.util.URLS;
 import darshan.com.redditdemoapp.util.UniversalImageLoader;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,7 +40,6 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 public class MainActivity extends AppCompatActivity implements PostsListAdapter.OnPostClickListener {
 
     private static final String TAG = "MainActivity";
-    private final String BASE_URL = "https://www.reddit.com/r/";
 
     private String mCurrentFeed;
     private ExtractXML_CData mExtractXML_CData;
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements PostsListAdapter.
     @Override
     public void onPostClick(Post post) {
         //start CommentActivity
-//        Log.d(TAG, "onPostClick: " + post);
+        Log.d(TAG, "onPostClick: " + post);
 
         Intent intent = new Intent(this, CommentActivity.class);
         intent.putExtra(getString(R.string.selected_post), post);
@@ -92,14 +92,13 @@ public class MainActivity extends AppCompatActivity implements PostsListAdapter.
                 }
             }
         });
-
     }
 
 
     private void getWebData() {
         mProgressBar.setVisibility(View.VISIBLE);
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(URLS.BASE_URL)
                 .addConverterFactory(SimpleXmlConverterFactory.create())
                 .build();
 

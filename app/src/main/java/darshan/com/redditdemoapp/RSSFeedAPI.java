@@ -59,11 +59,16 @@ public interface RSSFeedAPI {
             @HeaderMap Map<String, String> header,
             @Path("comment") String comment,
             @Query("parent") String parentItemId,
-            @Query("amp;text") String commentString
+            @Query(value = "amp;text", encoded = true) String commentString
+    );
+
+//    https://www.reddit.com/api/comment?parent=t1_e2g8xl3&amp%3Btext=test%20comment
+    @POST("comment?parent=t1_e2g8xl3&amp;text=test%20comment")
+    Call<CommentPosted> postCommentStatic(
+            @HeaderMap Map<String, String> header
     );
 
 
-    @POST("?parent=t1_e2erok6&amp;text=hello")
-    Call<CommentPosted> postCommentStatic();
+
 
 }
