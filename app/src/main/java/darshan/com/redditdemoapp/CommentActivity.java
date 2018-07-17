@@ -281,10 +281,10 @@ public class CommentActivity extends AppCompatActivity implements CommentsListAd
                 );
 
 //                comment?parent=t1_e2g8xl3&amp;text=test%20comment
-                String commentFormatted = mExtractXML_CData.formatComment(commentStr);
+//                String commentFormatted = mExtractXML_CData.formatComment(commentStr);
 
                 Call<CommentPosted> call = rssFeedAPI
-                        .postComment(headerMap, "comment", itemId, commentFormatted);
+                        .postComment(headerMap, "comment", itemId, commentStr);
 
                 call.enqueue(new Callback<CommentPosted>() {
                     @Override
