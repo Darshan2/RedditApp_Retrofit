@@ -21,5 +21,5 @@
 <li>RecyclerView and CardViews to display content</li>
 <li>WebViews</li>
 <li>Basic Android Material Design</li>
-<li>Trying to post comment in subreddit(Work in progress)</li>
+<li>Can comment on posts in subreddit</li>
 </ol>
